@@ -27,6 +27,7 @@ outputs/
 logs/
 tmp/
 *.tmp
+demo/output/
 
 # Credentials and local configuration
 .env

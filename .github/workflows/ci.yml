@@ -1,0 +1,65 @@
+name: CPU checks
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  syntax-and-assets:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+      - name: Compile Python sources
+        run: python -m compileall -q apps demo scripts
+      - name: Check README assets
+        run: python scripts/check_readme_assets.py
+
+  service-tests:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+          cache: pip
+          cache-dependency-path: apps/industrial-ai-service/requirements.txt
+      - name: Install service dependencies
+        run: python -m pip install -r apps/industrial-ai-service/requirements.txt
+      - name: Run workflow tests
+        working-directory: apps/industrial-ai-service
+        run: >-
+          python -m unittest -v
+          test_app.py
+          test_api.py
+          test_hunyuan_adapter.py
+          test_mesh_repair_adapter.py
+          test_mesh_workbench_phase2.py
+          test_assembly_component.py
+          test_assembly_autoplanner.py
+
+  geometry-tests-and-demo:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+          cache: pip
+          cache-dependency-path: requirements-geometry.txt
+      - name: Install CPU geometry dependencies
+        run: python -m pip install -r requirements-geometry.txt
+      - name: Run geometry tests
+        working-directory: apps/industrial-ai-service
+        run: >-
+          python -m unittest -v
+          test_mesh_repair_tool.py
+          test_extract_spur_gear_parameters.py
+          test_rebuild_external_spur_gear.py
+      - name: Run reproducible CPU demo
+        run: python demo/run_mesh_repair_demo.py --output-dir /tmp/mesh-repair-demo

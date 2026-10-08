@@ -1,0 +1,435 @@
+{
+  "schema_version": "1.0",
+  "operation": "detached_artifact_cleanup_demo",
+  "status": "DEMO_PASSED_REQUIRES_HUMAN_REVIEW",
+  "input": {
+    "path": "damaged_with_detached_artifact.glb",
+    "sha256": "c893566698b6b5c4c20c42c5c818e134173888cb9de4711a63bfe8844103f5cc",
+    "metrics": {
+      "vertices": 170,
+      "faces": 332,
+      "components": 2,
+      "watertight": true,
+      "winding_consistent": true,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_vertices_exact": 0,
+      "duplicate_faces": 0,
+      "volume": 1.9600235356011746,
+      "area": 10.363994660432766,
+      "bounds": [
+        [
+          -1.0,
+          -0.699999988079071,
+          -0.3499999940395355
+        ],
+        [
+          1.0,
+          0.699999988079071,
+          1.8179999589920044
+        ]
+      ],
+      "extents": [
+        2.0,
+        1.399999976158142,
+        2.16799995303154
+      ],
+      "component_area_shares": [
+        0.9996145433906516,
+        0.0003854566093485298
+      ],
+      "surface_quality": {
+        "edge_length": {
+          "p50": 0.005631603668014451,
+          "p90": 0.005848535196855664,
+          "p95": 0.005848578061805117,
+          "p99": 2.0,
+          "max": 2.441311109474333
+        },
+        "triangle_aspect_ratio": {
+          "p50": 1.1339741300055728,
+          "p90": 1.1643384572057296,
+          "p95": 1.164348440222874,
+          "p99": 2.781872228897276,
+          "max": 3.0270886316990477
+        },
+        "adjacent_normal_angle_degrees": {
+          "p50": 10.883029707596428,
+          "p90": 11.446946073180792,
+          "p95": 11.447164257521125,
+          "p99": 90.0,
+          "max": 90.0
+        },
+        "sharp_adjacent_edge_count": 12,
+        "sharp_angle_threshold_degrees": 35.0,
+        "interpretation": "高法向夹角可能是齿尖、齿根、中心孔等合法锐边；该指标用于定位曲面质量候选，不能单独判定应平滑或删除。"
+      }
+    }
+  },
+  "candidate": {
+    "path": "repaired_candidate.glb",
+    "sha256": "e0b8089136d409de247bfca5dc22b35e30c84bbc51f5ef20ee469820db80dccc",
+    "metrics": {
+      "vertices": 8,
+      "faces": 12,
+      "components": 1,
+      "watertight": true,
+      "winding_consistent": true,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_vertices_exact": 0,
+      "duplicate_faces": 0,
+      "volume": 1.9599999332427984,
+      "area": 10.359999790191651,
+      "bounds": [
+        [
+          -1.0,
+          -0.699999988079071,
+          -0.3499999940395355
+        ],
+        [
+          1.0,
+          0.699999988079071,
+          0.3499999940395355
+        ]
+      ],
+      "extents": [
+        2.0,
+        1.399999976158142,
+        0.699999988079071
+      ],
+      "component_area_shares": [
+        1.0
+      ],
+      "surface_quality": {
+        "edge_length": {
+          "p50": 1.5652475575938454,
+          "p90": 2.2156667371148377,
+          "p95": 2.441311109474333,
+          "p99": 2.441311109474333,
+          "max": 2.441311109474333
+        },
+        "triangle_aspect_ratio": {
+          "p50": 2.23606797749979,
+          "p90": 3.0270886316990477,
+          "p95": 3.0270886316990477,
+          "p99": 3.0270886316990477,
+          "max": 3.0270886316990477
+        },
+        "adjacent_normal_angle_degrees": {
+          "p50": 90.0,
+          "p90": 90.0,
+          "p95": 90.0,
+          "p99": 90.0,
+          "max": 90.0
+        },
+        "sharp_adjacent_edge_count": 12,
+        "sharp_angle_threshold_degrees": 35.0,
+        "interpretation": "高法向夹角可能是齿尖、齿根、中心孔等合法锐边；该指标用于定位曲面质量候选，不能单独判定应平滑或删除。"
+      }
+    }
+  },
+  "repair_operation": {
+    "name": "remove_tiny_detached_artifacts_candidate",
+    "accepted": true,
+    "changed": true,
+    "before": {
+      "vertices": 170,
+      "faces": 332,
+      "components": 2,
+      "watertight": true,
+      "winding_consistent": true,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_vertices_exact": 0,
+      "duplicate_faces": 0,
+      "volume": 1.9600235356011746,
+      "area": 10.363994660432766,
+      "bounds": [
+        [
+          -1.0,
+          -0.699999988079071,
+          -0.3499999940395355
+        ],
+        [
+          1.0,
+          0.699999988079071,
+          1.8179999589920044
+        ]
+      ],
+      "extents": [
+        2.0,
+        1.399999976158142,
+        2.16799995303154
+      ],
+      "component_area_shares": [
+        0.9996145433906516,
+        0.0003854566093485298
+      ],
+      "surface_quality": {
+        "edge_length": {
+          "p50": 0.005631603668014451,
+          "p90": 0.005848535196855664,
+          "p95": 0.005848578061805117,
+          "p99": 2.0,
+          "max": 2.441311109474333
+        },
+        "triangle_aspect_ratio": {
+          "p50": 1.1339741300055728,
+          "p90": 1.1643384572057296,
+          "p95": 1.164348440222874,
+          "p99": 2.781872228897276,
+          "max": 3.0270886316990477
+        },
+        "adjacent_normal_angle_degrees": {
+          "p50": 10.883029707596428,
+          "p90": 11.446946073180792,
+          "p95": 11.447164257521125,
+          "p99": 90.0,
+          "max": 90.0
+        },
+        "sharp_adjacent_edge_count": 12,
+        "sharp_angle_threshold_degrees": 35.0,
+        "interpretation": "高法向夹角可能是齿尖、齿根、中心孔等合法锐边；该指标用于定位曲面质量候选，不能单独判定应平滑或删除。"
+      }
+    },
+    "component_count_before": 2,
+    "thresholds": {
+      "minimum_main_area_share": 0.995,
+      "maximum_discarded_area_share": 0.005,
+      "maximum_discarded_volume_share": 0.005,
+      "maximum_fragment_extent_to_main_ratio": 0.05,
+      "maximum_component_count": 16
+    },
+    "rejection_reasons": [],
+    "semantic_warning": "仅适用于预期为单一零件的模型；独立小部件也可能是合法装配件，必须人工复核。",
+    "main_area_share": 0.9996145433906516,
+    "discarded_component_count": 1,
+    "discarded_area_share": 0.0003854566093485298,
+    "discarded_volume_share": 1.204187498122391e-05,
+    "fragment_extent_to_main_ratios": [
+      0.018000006675720215
+    ],
+    "discarded_components": [
+      {
+        "rank": 2,
+        "vertices": 162,
+        "faces": 320,
+        "area": 0.0039948702411166815,
+        "area_share": 0.0003854566093485298,
+        "volume": 2.360235837596581e-05,
+        "extent_to_main_ratio": 0.018000006675720215,
+        "bounds": [
+          [
+            -0.017999999225139618,
+            -0.017999999225139618,
+            1.781999945640564
+          ],
+          [
+            0.017999999225139618,
+            0.017999999225139618,
+            1.8179999589920044
+          ]
+        ]
+      }
+    ],
+    "local_degenerate_retriangulation": {
+      "name": "local_degenerate_face_edge_flip",
+      "accepted": false,
+      "changed": false,
+      "flips": [],
+      "rejection_reasons": [
+        "主体没有需要局部重划分的退化面。"
+      ],
+      "before": {
+        "vertices": 8,
+        "faces": 12,
+        "components": 1,
+        "watertight": true,
+        "winding_consistent": true,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "degenerate_faces": 0,
+        "duplicate_vertices_exact": 0,
+        "duplicate_faces": 0,
+        "volume": 1.9599999332427984,
+        "area": 10.359999790191651,
+        "bounds": [
+          [
+            -1.0,
+            -0.699999988079071,
+            -0.3499999940395355
+          ],
+          [
+            1.0,
+            0.699999988079071,
+            0.3499999940395355
+          ]
+        ],
+        "extents": [
+          2.0,
+          1.399999976158142,
+          0.699999988079071
+        ],
+        "component_area_shares": [
+          1.0
+        ],
+        "surface_quality": {
+          "edge_length": {
+            "p50": 1.5652475575938454,
+            "p90": 2.2156667371148377,
+            "p95": 2.441311109474333,
+            "p99": 2.441311109474333,
+            "max": 2.441311109474333
+          },
+          "triangle_aspect_ratio": {
+            "p50": 2.23606797749979,
+            "p90": 3.0270886316990477,
+            "p95": 3.0270886316990477,
+            "p99": 3.0270886316990477,
+            "max": 3.0270886316990477
+          },
+          "adjacent_normal_angle_degrees": {
+            "p50": 90.0,
+            "p90": 90.0,
+            "p95": 90.0,
+            "p99": 90.0,
+            "max": 90.0
+          },
+          "sharp_adjacent_edge_count": 12,
+          "sharp_angle_threshold_degrees": 35.0,
+          "interpretation": "高法向夹角可能是齿尖、齿根、中心孔等合法锐边；该指标用于定位曲面质量候选，不能单独判定应平滑或删除。"
+        }
+      },
+      "after_trial": {
+        "vertices": 8,
+        "faces": 12,
+        "components": 1,
+        "watertight": true,
+        "winding_consistent": true,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "degenerate_faces": 0,
+        "duplicate_vertices_exact": 0,
+        "duplicate_faces": 0,
+        "volume": 1.9599999332427984,
+        "area": 10.359999790191651,
+        "bounds": [
+          [
+            -1.0,
+            -0.699999988079071,
+            -0.3499999940395355
+          ],
+          [
+            1.0,
+            0.699999988079071,
+            0.3499999940395355
+          ]
+        ],
+        "extents": [
+          2.0,
+          1.399999976158142,
+          0.699999988079071
+        ],
+        "component_area_shares": [
+          1.0
+        ],
+        "surface_quality": {
+          "edge_length": {
+            "p50": 1.5652475575938454,
+            "p90": 2.2156667371148377,
+            "p95": 2.441311109474333,
+            "p99": 2.441311109474333,
+            "max": 2.441311109474333
+          },
+          "triangle_aspect_ratio": {
+            "p50": 2.23606797749979,
+            "p90": 3.0270886316990477,
+            "p95": 3.0270886316990477,
+            "p99": 3.0270886316990477,
+            "max": 3.0270886316990477
+          },
+          "adjacent_normal_angle_degrees": {
+            "p50": 90.0,
+            "p90": 90.0,
+            "p95": 90.0,
+            "p99": 90.0,
+            "max": 90.0
+          },
+          "sharp_adjacent_edge_count": 12,
+          "sharp_angle_threshold_degrees": 35.0,
+          "interpretation": "高法向夹角可能是齿尖、齿根、中心孔等合法锐边；该指标用于定位曲面质量候选，不能单独判定应平滑或删除。"
+        }
+      }
+    },
+    "after_trial": {
+      "vertices": 8,
+      "faces": 12,
+      "components": 1,
+      "watertight": true,
+      "winding_consistent": true,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_vertices_exact": 0,
+      "duplicate_faces": 0,
+      "volume": 1.9599999332427984,
+      "area": 10.359999790191651,
+      "bounds": [
+        [
+          -1.0,
+          -0.699999988079071,
+          -0.3499999940395355
+        ],
+        [
+          1.0,
+          0.699999988079071,
+          0.3499999940395355
+        ]
+      ],
+      "extents": [
+        2.0,
+        1.399999976158142,
+        0.699999988079071
+      ],
+      "component_area_shares": [
+        1.0
+      ],
+      "surface_quality": {
+        "edge_length": {
+          "p50": 1.5652475575938454,
+          "p90": 2.2156667371148377,
+          "p95": 2.441311109474333,
+          "p99": 2.441311109474333,
+          "max": 2.441311109474333
+        },
+        "triangle_aspect_ratio": {
+          "p50": 2.23606797749979,
+          "p90": 3.0270886316990477,
+          "p95": 3.0270886316990477,
+          "p99": 3.0270886316990477,
+          "max": 3.0270886316990477
+        },
+        "adjacent_normal_angle_degrees": {
+          "p50": 90.0,
+          "p90": 90.0,
+          "p95": 90.0,
+          "p99": 90.0,
+          "max": 90.0
+        },
+        "sharp_adjacent_edge_count": 12,
+        "sharp_angle_threshold_degrees": 35.0,
+        "interpretation": "高法向夹角可能是齿尖、齿根、中心孔等合法锐边；该指标用于定位曲面质量候选，不能单独判定应平滑或删除。"
+      }
+    }
+  },
+  "comparison": "before_after.png",
+  "limitations": [
+    "This demo removes only a tiny detached component from an expected single-part mesh.",
+    "Passing topology gates does not prove engineering dimensions or semantic correctness.",
+    "The candidate still requires visual review before downstream use."
+  ]
+}

@@ -1,5 +1,7 @@
 # Industrial Generative AI Workflow
 
+[![CPU checks](https://github.com/Orangemoon-arch/industrial-generative-ai-workflow/actions/workflows/ci.yml/badge.svg)](https://github.com/Orangemoon-arch/industrial-generative-ai-workflow/actions/workflows/ci.yml)
+
 面向工业零件的生成式 AI 工作流原型：在单张 RTX 3060 12GB 上，顺序调用文生图、视觉语言模型和图生三维模型，并通过版本化任务、确定性检查和人工门禁，把不稳定的生成结果整理为可追踪的工程候选。
 
 > 这是经过整理的个人作品集版本。模型权重、虚拟环境、上游仓库、现场设备配置和原始实验数据不包含在本仓库中。
@@ -28,6 +30,22 @@ flowchart LR
 - 水密性、连通部件、边界边、非流形边、退化面、体积和尺寸检查；
 - safe / standard / advanced / reconstruction 分级修复、试算和失败回滚；
 - 生成式参考与参数化工程重建之间的明确边界。
+
+## 三分钟 CPU Demo
+
+不需要 GPU、模型权重或完整 Web 环境，即可运行真实的独立伪影诊断与安全清理逻辑：
+
+```bash
+python3 -m venv .demo-venv
+.demo-venv/bin/python -m pip install -r requirements-geometry.txt
+.demo-venv/bin/python demo/run_mesh_repair_demo.py
+```
+
+Demo 会确定性生成一个包含微小独立伪影的 GLB，输出修复候选、完整 JSON 报告和同视角对比图，并验证原始 GLB 的 SHA256 未改变。脚本拒绝覆盖非空输出目录。
+
+![CPU 网格修复 Demo](demo/example_output/before_after.png)
+
+示例产物位于 [`demo/example_output/`](demo/example_output/)，详细说明见 [`demo/README.md`](demo/README.md)。
 
 ## 我的工作
 
@@ -97,6 +115,7 @@ apps/
 ├── qwen3-vl/                # Qwen 检查工作进程与确定性归一化规则
 └── hunyuan-workers/         # Hunyuan 周边预处理、检查、导出和重建脚本
 assets/                      # 脱敏后的代表性结果
+demo/                        # 无 GPU 可运行示例与确定性示例输出
 docs/                        # 技术边界和复现说明
 ```
 
@@ -110,6 +129,7 @@ docs/                        # 技术边界和复现说明
 - 本作品仓包含的几何修复、参数提取与重建专项测试：24 项通过；
 - Gradio `build_app()` 可成功构建；
 - FastAPI OpenAPI 包含文生图、单图/多图生三维、状态查询和产物下载路由。
+- GitHub Actions 在 Python 3.10 上自动执行语法、README 资源、服务层、几何层和 CPU Demo 检查。
 
 完整 GPU 工作流依赖本地模型目录和各自独立的虚拟环境，本作品仓不提供权重。CPU 网格工具可在安装 `requirements-geometry.txt` 后独立阅读和试验。
 
