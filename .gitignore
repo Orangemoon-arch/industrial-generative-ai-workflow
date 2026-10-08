@@ -1,0 +1,51 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.pytest_cache/
+.mypy_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Models and caches
+models/
+checkpoints/
+*.safetensors
+*.ckpt
+*.pt
+*.pth
+*.bin
+.cache/
+cache/
+
+# Generated task data
+workspace/runs/
+outputs/
+logs/
+tmp/
+*.tmp
+
+# Credentials and local configuration
+.env
+.env.*
+*.pem
+*.key
+auth.json
+credentials.json
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Large generated media and archives
+*.zip
+*.rar
+*.tar
+*.tar.gz
+*.mp4
+*.mov
